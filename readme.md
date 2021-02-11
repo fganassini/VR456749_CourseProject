@@ -27,15 +27,7 @@ La seguente documentazione si propone di descrivere il progetto esplicitandone:
     - __quantità di pioggia giornaliera__, misurata da un pluviometro;
     - __radiazione solare__, misurata da un solarimetro.
     
-2. Gli strumenti vengono interrogati periodicamente. Di seguito ne vengono proposti i valori di default:
-
-    - termometri ogni 5 minuti;
-    - barometro ogni 10 minuti;
-    - strumento per il vento ogni 5 minuti;
-    - pluviometro ogni 24 ore;
-    - solarimetro ogni minuto.
-    
-3. Si assume per semplicità che i dati forniti siano già espressi in un'unità di misura standard.
+2. Si assume per semplicità che i dati forniti siano già espressi in un'unità di misura standard.
 
 
 ### 2. Elaborazione e memorizzazione dei dati
@@ -45,11 +37,11 @@ di poterli trasmettere al sistema centralizzato di memorizzazione ed elaborazion
 
 2. Ogni elaborazione contiene l'elenco di tutti i parametri, la data e l'ora in cui è stata effettuata.
 
-3. L'elaborazione viene effettuata periodicamente. L'intervallo di tempo di default corrisponde a quello più piccolo di
-interrogazione degli strumenti.
+3. L'elaborazione viene effettuata dopo ogni raccolta.
 
-4. Le elaborazioni viene memorizzate periodicamente in un file di backup apposito presente su un dispositivo di memorizzazione
-della stazione. Questo permette, in caso di mancata trasmissione o di perdita di dati del sistema centrale, di poter recuperare
+4. Le elaborazioni viene memorizzate periodicamente (per semplicità, dopo un determinato numero di 
+elaborazioni) in un file di backup apposito presente su un dispositivo di memorizzazione della stazione. 
+Questo permette, in caso di mancata trasmissione o di perdita di dati del sistema centrale, di poter recuperare
 le elaborazioni mancanti.
 
 
@@ -69,8 +61,6 @@ un messaggio relativo che verrà trasmesso al sistema centrale.
 1. Il componente prevede la possibilità di essere riconfigurato. In particolare possono essere eseguite le seguenti
 riconfigurazioni:
 
-    - modifica degli intervalli di tempo di interrogazione dei dispositivi;
-    - modifica dell'intervallo di tempo secondo cui effettuare le elaborazioni;
     - assegnamento degli strumenti da cui ricavare i dati, in caso di eventuali malfunzionamenti o sostituzione di essi;
     - modifica del periodo di salvataggio su file.
     
@@ -79,3 +69,100 @@ eventuali condizioni avverse che possano richiedere uno spegnimento della stazio
 
 3. Il componente, in caso di spegnimento richiesto dal controllore, provvede a memorizzare sul file di backup
 le ultime elaborazioni completate e poi si spegne.
+
+
+
+## Scenari
+
+### Primo scenario
+
+__Assunzioni__:
+
+__Normale esecuzione:__
+
+__Eventuali intoppi e comportamente relativi:__
+
+__Altre attività__:
+
+__Stato finale del sistema__:
+
+
+### Secondo scenario
+
+__Assunzioni__:
+
+__Normale esecuzione:__
+
+__Eventuali intoppi e comportamente relativi:__
+
+__Altre attività__:
+
+__Stato finale del sistema__:
+
+### Terzo scenario
+
+__Assunzioni__:
+
+__Normale esecuzione:__
+
+__Eventuali intoppi e comportamente relativi:__
+
+__Altre attività__:
+
+__Stato finale del sistema__:
+
+
+### Quarto scenario
+
+__Assunzioni__:
+
+__Normale esecuzione:__
+
+__Eventuali intoppi e comportamente relativi:__
+
+__Altre attività__:
+
+__Stato finale del sistema__:
+
+
+### Quinto scenario
+
+__Assunzioni__:
+
+__Normale esecuzione:__
+
+__Eventuali intoppi e comportamente relativi:__
+
+__Altre attività__:
+
+__Stato finale del sistema__:
+
+
+## Design
+
+### Casi d'uso
+
+Descrizione
+Immagine
+
+### Diagramma delle classi
+
+Descrizione
+Immagine
+
+### Diagrammi d'attività
+
+Descrizione
+Immagine
+
+### Diagrammi di sequenza
+
+Descrizione
+Immagine
+
+
+## Test
+
+Test d'accettazione
+
+Copertura test d'unità
