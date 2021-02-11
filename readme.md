@@ -74,58 +74,70 @@ le ultime elaborazioni completate e poi si spegne.
 
 ## Scenari
 
-### Primo scenario
+### 1. Si richiedono i dati meteorologici alla stazione (caso 1)
 
-__Assunzioni__:
+__Assunzioni__: la stazione è in servizio e funziona correttamente.
 
-__Normale esecuzione:__
+__Normale esecuzione:__ il sistema centrale di memorizzazione richiede alla stazione i dati meteorologici
+attraverso il sistema di comunicazione. Giunta la richiesta la stazione deve restituire una lista ben formata
+con i dati richiesti.
 
-__Eventuali intoppi e comportamente relativi:__
+__Eventuali intoppi e comportamente relativi:__ la stazione non trova nessun dato in memoria. In tal caso,
+effettua una verifica sul file di archivio. Se i dati richiesti sono presenti, li restituisce ben formattati
+come nel flusso di normale esecuzione. Se non sono presenti restituisce un messaggio al sistema che i dati non
+sono presenti.
 
-__Altre attività__:
-
-__Stato finale del sistema__:
+__Stato finale del sistema__: 
 
 
-### Secondo scenario
+### 2. Si richiedono i dati meteorologici alla stazione (caso 3)
 
-__Assunzioni__:
+__Assunzioni__: la stazione presenta alcuni strumenti meteorologici in avaria.
 
-__Normale esecuzione:__
+__Normale esecuzione:__ il sistema centrale di memorizzazione richiede alla stazione i dati meteorologici
+attraverso il sistema di comunicazione. Giunta la richiesta la stazione deve restituire una lista ben formata
+con i dati richiesti. Per gli strumenti in avaria i dati sono impostati a null.
 
-__Eventuali intoppi e comportamente relativi:__
-
-__Altre attività__:
-
-__Stato finale del sistema__:
-
-### Terzo scenario
-
-__Assunzioni__:
-
-__Normale esecuzione:__
-
-__Eventuali intoppi e comportamente relativi:__
+__Eventuali intoppi e comportamente relativi:__ 
 
 __Altre attività__:
 
 __Stato finale del sistema__:
 
 
-### Quarto scenario
+### 3. Si riconfigura la stazione modificando tutti i parametri
 
-__Assunzioni__:
+__Assunzioni__: la stazione presenta già una precedente configurazione.
 
-__Normale esecuzione:__
+__Normale esecuzione:__ si crea una configurazione con i nuovi parametri. Questa viene poi assegnata
+alla stazione e pertanto essa prosegue la sua esecuzione con la nuova configurazione.
 
-__Eventuali intoppi e comportamente relativi:__
+__Eventuali intoppi e comportamente relativi:__ i parametri assegnati non sono riconosciuti dalla stazione
+in quanto non conformi allo standard previsto. In tal caso viene comunicato un messaggio di errore e la stazione
+mantiene la precedente configurazione.
 
 __Altre attività__:
 
 __Stato finale del sistema__:
 
 
-### Quinto scenario
+### 4. Si riconfigura la stazione modificando solo alcuni parametri
+
+__Assunzioni__: la stazione presenta già una precedente configurazione.
+
+__Normale esecuzione:__ si ricava la configurazione della stazione e si modificano solo i parametri necessari.
+Modificati i parametri essa prosegue la sua esecuzione con la nuova configurazione.
+
+__Eventuali intoppi e comportamente relativi:__ i parametri assegnati non sono riconosciuti dalla stazione
+in quanto non conformi allo standard previsto. In tal caso viene comunicato un messaggio di errore e la stazione
+mantiene la precedente configurazione.
+
+__Altre attività__:
+
+__Stato finale del sistema__:
+
+
+### 5. Si verifica se i dati vengono salvati sul file periodicamente
 
 __Assunzioni__:
 
@@ -163,6 +175,19 @@ Immagine
 
 ## Test
 
-Test d'accettazione
+###Test d'accettazione
 
-Copertura test d'unità
+Scenario 1
+
+Scenario 2
+
+Scenario 3
+
+Scenario 4
+
+Scenario 5
+
+Scenario 6
+
+
+###Copertura test d'unità
