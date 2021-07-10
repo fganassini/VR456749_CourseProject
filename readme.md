@@ -18,7 +18,7 @@ La seguente documentazione si propone di descrivere il progetto esplicitandone:
 
 ### 1. Raccolta dei dati meteorologici
 
-1. Il componente raccoglie i seguenti dati dai rispettivi strumenti meteorologici:
+1. Il collezionatore raccoglie i seguenti dati dai rispettivi strumenti meteorologici:
 
     - __temperatura del suolo__, misurata da un primo termometro;
     - __temperatura dell'aria__, misurata da un secondo termometro;
@@ -27,12 +27,18 @@ La seguente documentazione si propone di descrivere il progetto esplicitandone:
     - __quantità di pioggia giornaliera__, misurata da un pluviometro;
     - __radiazione solare__, misurata da un solarimetro.
     
-2. Si assume per semplicità che i dati forniti siano già espressi in un'unità di misura standard.
+2. Si assume per semplicità che i dati forniti siano già espressi in un'unità di misura standard. In particolare:
+
+    - temperature in __Kelvin (K)__
+    - pressione atmosferica in __Pascal (Pa)__;
+    - velocità del vento in __metri al secondo (m/s)__;
+    - quantità di pioggia giornaliera in __metri (m)__;
+    - radiazione solare in __watt al metro quadro (W/m^2)__.
 
 
 ### 2. Elaborazione e memorizzazione dei dati
 
-1. Il componente, una volta raccolta i dati, ne effettua una prima elaborazione per raggrupparli e formattarli.
+1. Il collezionatore, una volta raccolta i dati, ne effettua una prima elaborazione per raggrupparli e formattarli.
 
 2. Ogni elaborazione contiene l'elenco di tutti i parametri, la data e l'ora in cui è stata effettuata.
 
@@ -56,7 +62,7 @@ forniti dal componente.
 
 ### 1. Avvio del collezionatore
 
-__Assunzioni__: il simulatore è nella schermata iniziale
+__Assunzioni__: il simulatore è nella schermata iniziale.
 
 __Normale esecuzione:__ l'utente seleziona la funzionalità "Avvia collezionatore". Il collezionatore viene avviato
 e il simulatore passa nella schermata dedicata ai servizi del collezionatore. 
@@ -84,55 +90,63 @@ __Stato finale del sistema__: il simulatore è nella schermata del collezionator
 
 ### 3. Richiesta dei dati meteorologici
 
-__Assunzioni__: 
+__Assunzioni__: il simulatore è nella schermata del collezionatore
 
-__Normale esecuzione:__ 
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Richiedi dati". Il collezionatore ricava i dati presenti nel
+database e ne restituisce l'elenco all'utente modificando lo status dei dati come "trasmessi". Viene poi fornita un'opzione all'utente per poter tornare
+nella schermata del collezionatore.
 
-__Eventuali intoppi e comportamenti relativi:__ 
+__Eventuali intoppi e comportamenti relativi:__ se il database risulta vuoto, a posto della lista viene visualizzato il
+messaggio "Nessun dato collezionato". Se dovessero esserci errori nel caricamento dei dati dal database, viene invece visualizzato
+un relativo messaggio di errore.
 
-__Altre attività__:
-
-__Stato finale del sistema__:
+__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
 
 
 ### 4. Riconfingurazione del collezionatore
 
-__Assunzioni__: 
+__Assunzioni__: il simulatore è nella schermata del collezionatore.
 
-__Normale esecuzione:__ 
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Riconfigura". Viene mostrato un form con l'attuale
+configurazione. L'utente modifica nel form i parametri voluti e poi seleziona l'opzione "Applica". Viene nuovamente
+mostrata la schermata con i parametri aggiornati. Viene poi fornita un'opzione all'utente per poter tornare
+nella schermata del collezionatore.
 
-__Eventuali intoppi e comportamenti relativi:__ 
+__Eventuali intoppi e comportamenti relativi:__ se l'utente lascia dei campi vuoti, viene visualizzato un messaggio
+che lo invita a compilare i campi obbligatori.
 
-__Altre attività__:
+__Altre attività:__ l'utente può tornare in qualsiasi momento nella schermata del collezionatore. Se compila il form e torna
+indietro senza prima selezionare l'opzione "Applica" non viene effettuata nessuna modifica alla configurazione. Pertanto,
+al successivo accesso a "Riconfigura" verrà restituita l'ultima configurazione applicata.
 
-__Stato finale del sistema__:
+__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
 
 
 ### 5. Spegnimento del collezionatore
 
-__Assunzioni__:
+__Assunzioni__: il simulatore è nella schermata del collezionatore.
 
-__Normale esecuzione:__
+__Normale esecuzione:__ l'utente seleziona l'opzione "Spegni collezionatore". Viene visualizzata la schermata iniziale.
 
-__Eventuali intoppi e comportamenti relativi:__ 
+__Eventuali intoppi e comportamenti relativi:__ se dovessero esserci errori nella procedura, viene visualizzato un messaggio
+di errore.
 
-__Altre attività__:
-
-__Stato finale del sistema__:
+__Stato finale del sistema__: il simulatore è nella schermata iniziale.
 
 
 
 ### 6. Lettura del database a collezionatore spento
 
-__Assunzioni__:
+__Assunzioni__: il simulatore è nella schermata iniziale.
 
-__Normale esecuzione:__
+__Normale esecuzione:__ l'utente seleziona l'opzione "Visualizza database". Viene restituita la lista con tutti
+i dati memorizzati in esso. Viene poi fornita un'opzione all'utente per poter tornare nella schermata iniziale.
 
-__Eventuali intoppi e comportamenti relativi:__ 
+__Eventuali intoppi e comportamenti relativi:__ se il database risultasse vuoto, viene visualizzato un messaggio
+"Database vuoto". Se dovessero esserci errori nel caricamento dei dati nella schermata viene visualizzato un messaggio di errore.
+Viene poi fornita un'opzione all'utente per poter tornare nella schermata iniziale.
 
-__Altre attività__:
-
-__Stato finale del sistema__:
+__Stato finale del sistema__: il simulatore è nella schermata iniziale.
 
 
 

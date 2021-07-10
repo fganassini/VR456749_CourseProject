@@ -12,6 +12,7 @@ public class WeatherDataTest {
         double pressure = 20.654;
         String windDirection = "NORD";
         double windSpeed = 10;
+        double rain = 0.001;
         double sunshine = 64;
         WeatherData wd = new WeatherData(groundTemperature, airTemperature, pressure, windDirection, windSpeed, sunshine);
         assertNotNull("WeatherData should be not null", wd);
@@ -20,6 +21,7 @@ public class WeatherDataTest {
         assertEquals("Pressure should be equal to " + pressure, pressure, wd.getPressure(), 0.0001);
         assertEquals("WindDirection should be equal to " + windDirection, windDirection, wd.getWindDirection());
         assertEquals("WindSpeed should be equal to " + windSpeed, windSpeed, wd.getWindSpeed(), 0.0001);
+        assertEquals("Rain should be equal to " + rain, rain, wd.getRain(), 0.0001);
         assertEquals("Sunshine should be equal to " + sunshine, sunshine, wd.getSunshine(), 0.0001);
     }
 }

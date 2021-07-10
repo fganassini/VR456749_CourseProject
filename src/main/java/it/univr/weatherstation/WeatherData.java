@@ -6,6 +6,7 @@ public class WeatherData {
     private double pressure;
     private String windDirection;
     private double windSpeed;
+    private double rain;
     private double sunshine;
 
 
@@ -36,6 +37,10 @@ public class WeatherData {
 
     public double getWindSpeed() {
         return windSpeed;
+    }
+
+    public double getRain() {
+        return rain;
     }
 
     public double getSunshine() {
