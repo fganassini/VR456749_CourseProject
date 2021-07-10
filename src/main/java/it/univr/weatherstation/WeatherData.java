@@ -1,15 +1,15 @@
 package it.univr.weatherstation;
 
 public class WeatherData {
-    private float groundTemperature;
-    private float airTemperature;
-    private float pressure;
+    private double groundTemperature;
+    private double airTemperature;
+    private double pressure;
     private String windDirection;
-    private float windSpeed;
-    private float sunshine;
+    private double windSpeed;
+    private double sunshine;
 
 
-    public WeatherData(float groundTemperature, float airTemperature, float pressure, String windDirection, float windSpeed, float sunshine) {
+    public WeatherData(double groundTemperature, double airTemperature, double pressure, String windDirection, double windSpeed, double sunshine) {
         this.groundTemperature = groundTemperature;
         this.airTemperature = airTemperature;
         this.pressure = pressure;
@@ -18,15 +18,15 @@ public class WeatherData {
         this.sunshine = sunshine;
     }
 
-    public float getGroundTemperature() {
+    public double getGroundTemperature() {
         return groundTemperature;
     }
 
-    public float getAirTemperature() {
+    public double getAirTemperature() {
         return airTemperature;
     }
 
-    public float getPressure() {
+    public double getPressure() {
         return pressure;
     }
 
@@ -34,11 +34,11 @@ public class WeatherData {
         return windDirection;
     }
 
-    public float getWindSpeed() {
+    public double getWindSpeed() {
         return windSpeed;
     }
 
-    public float getSunshine() {
+    public double getSunshine() {
         return sunshine;
     }
 }

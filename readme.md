@@ -32,122 +32,110 @@ La seguente documentazione si propone di descrivere il progetto esplicitandone:
 
 ### 2. Elaborazione e memorizzazione dei dati
 
-1. Il componente, una volta raccolta i dati, ne effettua una prima elaborazione per raggrupparli e formattarli al fine
-di poterli trasmettere al sistema centralizzato di memorizzazione ed elaborazione.
+1. Il componente, una volta raccolta i dati, ne effettua una prima elaborazione per raggrupparli e formattarli.
 
 2. Ogni elaborazione contiene l'elenco di tutti i parametri, la data e l'ora in cui è stata effettuata.
 
-3. L'elaborazione viene effettuata dopo ogni raccolta.
+3. L'elaborazione viene effettuata dopo ogni singola raccolta.
 
-4. Le elaborazioni viene memorizzate periodicamente (per semplicità, dopo un determinato numero di 
-elaborazioni) in un file di backup apposito presente su un dispositivo di memorizzazione della stazione. 
-Questo permette, in caso di mancata trasmissione o di perdita di dati del sistema centrale, di poter recuperare
-le elaborazioni mancanti.
+4. I dati elaborati vengono scritti sul database interno alla stazione. Esso permette di poter recuperare eventuali dati non trasmessi.
 
 
-### 3. Trasmissione dei dati
 
-1. Il sistema centrale di memorizzazione ed elaborazione dei dati meteorologici richiede i dati alla stazione.
-Tale richiesta viene inoltrata al componente dal sistema di comunicazione. Il componente, pertanto, invia i dati al
-sistema di comunicazione e attende da esso l'esito della trasmissione.
+### 3. Altri requisiti
 
-2. Se i dati richiesti non sono presenti nella corrente sessione d'esecuzione (si presuppone che la stazione sia 
-stata spenta), essi vengono cercati nel file di backup. In caso non vengano trovati, viene inviato al sistema di comunicazione
-un messaggio relativo che verrà trasmesso al sistema centrale.
-
-
-### 4. Altri requisiti
-
-1. Il componente prevede la possibilità di essere riconfigurato. In particolare possono essere eseguite le seguenti
-riconfigurazioni:
-
-    - assegnamento degli strumenti da cui ricavare i dati, in caso di eventuali malfunzionamenti o sostituzione di essi;
-    - modifica del periodo di salvataggio su file.
+1. Il componente prevede la possibilità di essere riconfigurato. In particolare, la configurazione contiene l'assegnamento 
+degli strumenti da cui ricavare i dati, in caso di eventuali malfunzionamenti o sostituzione di essi.
     
-2. I parametri meteorologici devono essere inviati anche al componente controllore della stazione, al fine di constatare
-eventuali condizioni avverse che possano richiedere uno spegnimento della stazione.
-
-3. Il componente, in caso di spegnimento richiesto dal controllore, provvede a memorizzare sul file di backup
-le ultime elaborazioni completate e poi si spegne.
+2. Viene incluso inoltre un simulatore ad interfaccia web, con il quale l'utente può provare le varie funzionalità e servizi
+forniti dal componente.
 
 
 
 ## Scenari
 
-### 1. Si richiedono i dati meteorologici alla stazione (caso 1)
+### 1. Avvio del collezionatore
 
-__Assunzioni__: la stazione è in servizio e funziona correttamente.
+__Assunzioni__: il simulatore è nella schermata iniziale
 
-__Normale esecuzione:__ il sistema centrale di memorizzazione richiede alla stazione i dati meteorologici
-attraverso il sistema di comunicazione. Giunta la richiesta la stazione deve restituire una lista ben formata
-con i dati richiesti.
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Avvia collezionatore". Il collezionatore viene avviato
+e il simulatore passa nella schermata dedicata ai servizi del collezionatore. 
 
-__Eventuali intoppi e comportamente relativi:__ la stazione non trova nessun dato in memoria. In tal caso,
-effettua una verifica sul file di archivio. Se i dati richiesti sono presenti, li restituisce ben formattati
-come nel flusso di normale esecuzione. Se non sono presenti restituisce un messaggio al sistema che i dati non
-sono presenti.
+__Eventuali intoppi e comportamenti relativi:__ se nella procedura di avvio dovessero esserci errori, viene mostrato un
+messaggio di errore.
 
-__Stato finale del sistema__: 
+__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
 
 
-### 2. Si richiedono i dati meteorologici alla stazione (caso 3)
+### 2. Collezione dei dati meteorologici
 
-__Assunzioni__: la stazione presenta alcuni strumenti meteorologici in avaria.
+__Assunzioni__: il simulatore è nella schermata del collezionatore
 
-__Normale esecuzione:__ il sistema centrale di memorizzazione richiede alla stazione i dati meteorologici
-attraverso il sistema di comunicazione. Giunta la richiesta la stazione deve restituire una lista ben formata
-con i dati richiesti. Per gli strumenti in avaria i dati sono impostati a null.
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Colleziona dati". Il collezionatore effettua un numero predefinito
+di letture dagli strumenti meteorologici, le elabora e le scrive nel database. Finita l'esecuzione, viene restituito 
+all'utente il messaggio: "Collezione effettuata con successo". Viene poi fornita un'opzione all'utente per poter tornare
+nella schermata del collezionatore.
 
-__Eventuali intoppi e comportamente relativi:__ 
+__Eventuali intoppi e comportamenti relativi:__ se la procedura di collezione comporta degli errori, viene restituito all'utente
+il messaggio "Collezione non riuscita". Viene poi fornita un'opzione all'utente per poter tornare nella schermata del collezionatore.
 
-__Altre attività__:
-
-__Stato finale del sistema__:
+__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
 
 
-### 3. Si riconfigura la stazione modificando tutti i parametri
+### 3. Richiesta dei dati meteorologici
 
-__Assunzioni__: la stazione presenta già una precedente configurazione.
+__Assunzioni__: 
 
-__Normale esecuzione:__ si crea una configurazione con i nuovi parametri. Questa viene poi assegnata
-alla stazione e pertanto essa prosegue la sua esecuzione con la nuova configurazione.
+__Normale esecuzione:__ 
 
-__Eventuali intoppi e comportamente relativi:__ i parametri assegnati non sono riconosciuti dalla stazione
-in quanto non conformi allo standard previsto. In tal caso viene comunicato un messaggio di errore e la stazione
-mantiene la precedente configurazione.
+__Eventuali intoppi e comportamenti relativi:__ 
 
 __Altre attività__:
 
 __Stato finale del sistema__:
 
 
-### 4. Si riconfigura la stazione modificando solo alcuni parametri
+### 4. Riconfingurazione del collezionatore
 
-__Assunzioni__: la stazione presenta già una precedente configurazione.
+__Assunzioni__: 
 
-__Normale esecuzione:__ si ricava la configurazione della stazione e si modificano solo i parametri necessari.
-Modificati i parametri essa prosegue la sua esecuzione con la nuova configurazione.
+__Normale esecuzione:__ 
 
-__Eventuali intoppi e comportamente relativi:__ i parametri assegnati non sono riconosciuti dalla stazione
-in quanto non conformi allo standard previsto. In tal caso viene comunicato un messaggio di errore e la stazione
-mantiene la precedente configurazione.
+__Eventuali intoppi e comportamenti relativi:__ 
 
 __Altre attività__:
 
 __Stato finale del sistema__:
 
 
-### 5. Si verifica se i dati vengono salvati sul file periodicamente
+### 5. Spegnimento del collezionatore
 
 __Assunzioni__:
 
 __Normale esecuzione:__
 
-__Eventuali intoppi e comportamente relativi:__
+__Eventuali intoppi e comportamenti relativi:__ 
 
 __Altre attività__:
 
 __Stato finale del sistema__:
+
+
+
+### 6. Lettura del database a collezionatore spento
+
+__Assunzioni__:
+
+__Normale esecuzione:__
+
+__Eventuali intoppi e comportamenti relativi:__ 
+
+__Altre attività__:
+
+__Stato finale del sistema__:
+
+
+
 
 
 ## Design

@@ -1,4 +1,4 @@
 package it.univr.weatherstation;
 
-public class FileArchiveTest {
+public class SimulatorTest {
 }

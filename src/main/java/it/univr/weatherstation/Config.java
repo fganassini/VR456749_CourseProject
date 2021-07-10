@@ -7,7 +7,6 @@ public class Config {
     private String windmId;
     private String rainmId;
     private String sunmId;
-    private int savePeriod;
 
     public Config() {
         therm1Id = "th1_1";
@@ -16,7 +15,6 @@ public class Config {
         windmId = "w_1";
         rainmId = "r_1";
         sunmId = "s_1";
-        savePeriod = 3;
     }
 
     public void setTherm1Id(String therm1Id) {
@@ -43,7 +41,27 @@ public class Config {
         this.sunmId = sunmId;
     }
 
-    public void setSavePeriod(int savePeriod) {
-        this.savePeriod = savePeriod;
+    public String getTherm1Id() {
+        return therm1Id;
+    }
+
+    public String getTherm2Id() {
+        return therm2Id;
+    }
+
+    public String getBaromId() {
+        return baromId;
+    }
+
+    public String getWindmId() {
+        return windmId;
+    }
+
+    public String getRainmId() {
+        return rainmId;
+    }
+
+    public String getSunmId() {
+        return sunmId;
     }
 }
