@@ -9,7 +9,7 @@ public class AirThermometer {
     }
 
     public AirThermometer(String id) {
-        this. id = id;
+        this.id = id;
     }
 
     public float measureAirTemperature() {

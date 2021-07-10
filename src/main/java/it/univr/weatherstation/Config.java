@@ -1,5 +1,7 @@
 package it.univr.weatherstation;
 
+import java.util.Objects;
+
 public class Config {
     private String therm1Id;
     private String therm2Id;
@@ -64,4 +66,19 @@ public class Config {
     public String getSunmId() {
         return sunmId;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Config config = (Config) o;
+        return therm1Id.equals(config.therm1Id) &&
+                therm2Id.equals(config.therm2Id) &&
+                baromId.equals(config.baromId) &&
+                windmId.equals(config.windmId) &&
+                rainmId.equals(config.rainmId) &&
+                sunmId.equals(config.sunmId);
+    }
+
 }
