@@ -62,7 +62,7 @@ forniti dal componente.
 
 ### 1. Avvio del collezionatore
 
-__Assunzioni__: il simulatore è nella schermata iniziale.
+__Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
 __Normale esecuzione:__ l'utente seleziona la funzionalità "Avvia collezionatore". Il collezionatore viene avviato
 e il simulatore passa nella schermata dedicata ai servizi del collezionatore. 
@@ -70,12 +70,12 @@ e il simulatore passa nella schermata dedicata ai servizi del collezionatore.
 __Eventuali intoppi e comportamenti relativi:__ se nella procedura di avvio dovessero esserci errori, viene mostrato un
 messaggio di errore.
 
-__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
+__Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
 
 ### 2. Collezione dei dati meteorologici
 
-__Assunzioni__: il simulatore è nella schermata del collezionatore
+__Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
 __Normale esecuzione:__ l'utente seleziona la funzionalità "Colleziona dati". Il collezionatore effettua un numero predefinito
 di letture dagli strumenti meteorologici, le elabora e le scrive nel database. Finita l'esecuzione, viene restituito 
@@ -85,12 +85,12 @@ nella schermata del collezionatore.
 __Eventuali intoppi e comportamenti relativi:__ se la procedura di collezione comporta degli errori, viene restituito all'utente
 il messaggio "Collezione non riuscita". Viene poi fornita un'opzione all'utente per poter tornare nella schermata del collezionatore.
 
-__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
+__Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
 
 ### 3. Richiesta dei dati meteorologici
 
-__Assunzioni__: il simulatore è nella schermata del collezionatore
+__Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
 __Normale esecuzione:__ l'utente seleziona la funzionalità "Richiedi dati". Il collezionatore ricava i dati presenti nel
 database e ne restituisce l'elenco all'utente modificando lo status dei dati come "trasmessi". Viene poi fornita un'opzione all'utente per poter tornare
@@ -100,12 +100,12 @@ __Eventuali intoppi e comportamenti relativi:__ se il database risulta vuoto, a 
 messaggio "Nessun dato collezionato". Se dovessero esserci errori nel caricamento dei dati dal database, viene invece visualizzato
 un relativo messaggio di errore.
 
-__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
+__Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
 
 ### 4. Riconfingurazione del collezionatore
 
-__Assunzioni__: il simulatore è nella schermata del collezionatore.
+__Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
 __Normale esecuzione:__ l'utente seleziona la funzionalità "Riconfigura". Viene mostrato un form con l'attuale
 configurazione. L'utente modifica nel form i parametri voluti e poi seleziona l'opzione "Applica". Viene nuovamente
@@ -119,12 +119,12 @@ __Altre attività:__ l'utente può tornare in qualsiasi momento nella schermata 
 indietro senza prima selezionare l'opzione "Applica" non viene effettuata nessuna modifica alla configurazione. Pertanto,
 al successivo accesso a "Riconfigura" verrà restituita l'ultima configurazione applicata.
 
-__Stato finale del sistema__: il simulatore è nella schermata del collezionatore.
+__Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
 
 ### 5. Spegnimento del collezionatore
 
-__Assunzioni__: il simulatore è nella schermata del collezionatore.
+__Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
 __Normale esecuzione:__ l'utente seleziona l'opzione "Spegni collezionatore". Viene visualizzata la schermata iniziale.
 
@@ -143,18 +143,50 @@ __Stato finale del sistema__: il simulatore è nella schermata iniziale.
 
 ### Diagramma delle classi
 
-Descrizione
-Immagine
+![Class diagram](/designDiagrams/Class.jpg)
 
 ### Diagrammi d'attività
 
-Descrizione
-Immagine
+#### 1. Funzionamento generale del componente
+
+![Collector simulation - Activity Diagram](/designDiagrams/CollectorSimulation.jpg)
+
+#### 2. Collezione dei dati meteorologici
+
+![Collect data - Activity Diagram](/designDiagrams/CollectData.jpg)
+
+#### 3. Lettura dei dati meteorologici memorizzati
+
+![Read data - Activity Diagram](/designDiagrams/ReadData.jpg)
+
+#### 4. Modifica della configurazione
+
+![Change configuration - Activity Diagram](/designDiagrams/Reconfigure.jpg)
+
+
 
 ### Diagrammi di sequenza
 
-Descrizione
-Immagine
+#### 1. Avvio
+
+![Turn on - Seq. Diagram](/designDiagrams/TurnOnCollector.jpg)
+
+#### 2. Collezione dei dati meteorologici
+
+![Collect data - Seq. Diagram](/designDiagrams/GetAndProcessWeatherData.jpg)
+
+#### 3. Richiesta dei dati memorizzati
+
+![Request data - Seq. Diagram](/designDiagrams/RequestWeatherDataToCollector.jpg)
+
+#### 4. Modifica della configurazione
+
+![Change configuration - Seq. Diagram](/designDiagrams/ReconfigureCollector.jpg)
+
+#### 5. Spegnimento
+
+![Turn off - Seq. Diagram](/designDiagrams/TurnOffCollector.jpg)
+
 
 
 ## Test
