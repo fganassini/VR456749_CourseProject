@@ -118,7 +118,7 @@ al successivo accesso a "Reconfigure the collector" verrà restituita l'ultima c
 __Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
 
-### 5. Spegnimento del collezionatore
+### 5. Spegnimento
 
 __Assunzioni__: il simulatore è nella schermata delle funzionalità e il componente è acceso.
 
@@ -193,28 +193,102 @@ I test di accettazione sono stati implementati utilizzando il framework JWebUnit
 seguente link: [acceptance tests](https://github.com/fganassini/VR456749_AcceptanceTest).
 Di seguito ne viene effettuata una descrizione.
 
-#### Scenario 1
+#### Scenario 1 - Avvio
+
+##### Test 1
 
 Il test verifica se l'avvio del componente funziona correttamente. In particolare devono essere vere le seguenti condizioni:
+1. la schermata iniziale del simulatore contiene la funzionalità "Turn on the collector";
+2. lo status del componente è __false__, ossia spento;
+3. selezionando "Turn on the collector" viene mostrata la schermata delle funzionalità;
+4. lo status del componente viene impostato a __true__, ossia acceso.
+
+##### Test 2
+
+Il test verifica che una volta avviato il componente vengano mostrate le funzionalità. In particolare devono essere vere le seguenti condizioni:
+1. selezionando "Turn on the collector" viene mostrata la schermata delle funzionalità;
+2. tale schermata deve contenere i link "Collect some weather data", "Read weather data", "Reconfigure the collector" e "Turn on the collector".
     
-    1. la schermata iniziale del simulatore contiene la funzionalità "Turn on the collector";
 
-    2. lo status del componente è "false", ossia spento;
-    
-    3. selezionando "Turn on the collector" viene mostrata la schermata delle funzionalità;
-    
-    4. lo status del componente viene impostato a "true, ossia acceso.
-    
+#### Scenario 2 - Collezione dei dati meteorologici
 
-#### Scenario 2
+Il test verifica se la collezione dei dati funziona correttamente. In particolare devono essere vere le seguenti condizioni:
+1. selezionando "Collect some weather data" viene mostrata la schermata con il messaggio "Collection successfully done";
+2. nella schermata è presente il link "Go back"
+3. selezionando "Go back" viene mostrata la schermata delle funzionalità.
 
-Scenario 3
 
-Scenario 4
+#### Scenario 3 - Richiesta dei dati meteorologici
 
-Scenario 5
+##### Test 1
 
-Scenario 6
+Il test verifica se la richiesta di leggere i dati memorizzati funziona correttamente.
+In particolare devono essere vere le seguenti condizioni:
+1. selezionando "Read weather data" viene mostrata la schermata con la lista dei dati;
+2. la lista contiene dei dati oppure è vuota;
+3. nella schermata è presente il link "Go back"
+4. selezionando "Go back" viene mostrata la schermata delle funzionalità.
 
+##### Test 2
+
+Il test verifica che la lettura dei dati sia aggiornata se nel frattempo vengono effettuate collezioni.
+In particolare devono essere vera la seguente condizione: 
+eseguendo in sequenza una prima lettura, una collezione di dati e una seconda lettura, la lunghezza della seconda
+lista di dati è maggiore della prima.
+
+
+##### Test 3
+
+Il test verifica che due letture di dati consecutive senza collezioni forniscano gli stessi dati.
+In particolare deve essere vera la condizione per cui la prima lista abbia lunghezza uguale alla seconda.
+
+
+#### Scenario 4 - Riconfigurazione
+
+##### Test 1
+
+Il test verifica che la riconfigurazione avvenga correttamente. Viene utilizzata la seguente configurazione di prova:
+    - __ID termometro 1__ = "th1_2";
+    - __ID termometro 2__ = "th2_2";
+    - __ID barometro__ = "b_2";
+    - __ID misuratore vento__ = "w_2";
+    - __ID pluviometro__ = "r_2";
+    - __ID solarimetro__ = "s_2";
+
+In particolare devono essere vere le seguenti condizioni:
+1. selezionando "Reconfigure the collector" viene mostrata la schermata di riconfigurazione avente un form compilabile;
+2. impostando i campi con la configurazione descritta precedentemente ed effettuandone il submit, viene mostrata di nuovo la schermata di riconfigurazione;
+3. i parametri mostrati sono uguali a quelli della configurazione appena impostata;
+4. nella schermata è presente il link "Go back";
+5. selezionando "Go back" viene mostrata la schermata delle funzionalità.
+
+
+##### Test 2
+
+Il test verifica che la riconfigurazione senza submit avvenga correttamente. Viene utilizzata la seguente configurazione di prova:
+    - __ID termometro 1__ = "th1_3";
+    - __ID termometro 2__ = "th2_3";
+    - __ID barometro__ = "b_3";
+    - __ID misuratore vento__ = "w_3";
+    - __ID pluviometro__ = "r_3";
+    - __ID solarimetro__ = "s_3";
+
+In particolare devono essere vere le seguenti condizioni:
+1. impostando i campi con la configurazione descritta precedentemente e selezionando "Go back" senza aver effettuato il submit, viene restituita la schermata delle funzionalità;
+2. selezionando "Reconfigure the collector" viene aperta la schermata di riconfigurazione;
+3. nel form della schermata di riconfigurazione viene caricata la stessa configurazione presente all'inizio del test. 
+
+#### Scenario 5 - Spegnimento
+
+Il test verifica se lo spegnimento del componente funziona correttamente. In particolare devono essere vere le seguenti condizioni:
+1. lo status del componente è __true__, ossia acceso;
+2. selezionando "Turn off the collector" viene mostrata la schermata iniziale;
+3. lo status del componente viene impostato a __false__, ossia spento.
 
 ###Copertura test d'unità
+
+Al seguente link sono presenti tutti i dettagli circa la copertura dei test d'unità:
+[unit test coverage](unit-test-coverage.html).
+
+Il package mock, contenente i mock degli strumenti meteorologici,
+non sono stati testati poiché ritornano valori costanti.
