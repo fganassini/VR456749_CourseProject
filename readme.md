@@ -248,6 +248,7 @@ In particolare deve essere vera la condizione per cui la prima lista abbia lungh
 ##### Test 1
 
 Il test verifica che la riconfigurazione avvenga correttamente. Viene utilizzata la seguente configurazione di prova:
+
     - __ID termometro 1__ = "th1_2";
     - __ID termometro 2__ = "th2_2";
     - __ID barometro__ = "b_2";
@@ -266,6 +267,7 @@ In particolare devono essere vere le seguenti condizioni:
 ##### Test 2
 
 Il test verifica che la riconfigurazione senza submit avvenga correttamente. Viene utilizzata la seguente configurazione di prova:
+
     - __ID termometro 1__ = "th1_3";
     - __ID termometro 2__ = "th2_3";
     - __ID barometro__ = "b_3";
