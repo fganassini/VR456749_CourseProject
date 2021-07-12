@@ -139,8 +139,7 @@ __Stato finale del sistema__: il simulatore è nella schermata iniziale.
 
 ### Casi d'uso
 
-Descrizione
-Immagine
+![Use case diagram](/designDiagrams/UseCase.jpg)
 
 ### Diagramma delle classi
 
