@@ -4,10 +4,6 @@ public class Barometer {
     private final String id;
     private float pressure = (float) 10000.8;
 
-    public Barometer() {
-        this. id = "b_1";
-    }
-
     public Barometer(String id) {
         this.id = id;
     }
@@ -15,4 +11,6 @@ public class Barometer {
     public float measurePressure() {
         return pressure;
     }
+
+    public String getId() { return  id; }
 }

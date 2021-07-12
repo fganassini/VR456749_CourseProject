@@ -5,10 +5,6 @@ public class WindMeter {
     private String direction = "NORD-EST";
     private float speed = 30;
 
-    public WindMeter() {
-        this.id = "w_1";
-    }
-
     public WindMeter(String id) {
         this.id = id;
     }
@@ -20,4 +16,6 @@ public class WindMeter {
     public float measureWindSpeed() {
         return speed;
     }
+
+    public String getId() { return  id; }
 }

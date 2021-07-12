@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather station simulator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>People list</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Date and time</th>
+        <th>Ground temperature (K)</th>
+        <th>Air temperature (K)</th>
+        <th>Pressure (Pa)</th>
+        <th>Wind direction</th>
+        <th>Wind speed (m/s)</th>
+        <th>Rain (m)</th>
+        <th>Sunshine (W/m^2)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="wd: ${weatherData}">
+        <td th:text="${wd.dateTime}"></td>
+        <td th:text="${wd.groundTemperature}"></td>
+        <td th:text="${wd.airTemperature}"></td>
+        <td th:text="${wd.pressure}"></td>
+        <td th:text="${wd.windDirection}"></td>
+        <td th:text="${wd.windSpeed}"></td>
+        <td th:text="${wd.rain}"></td>
+        <td th:text="${wd.sunshine}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a th:href="collector">Go back</a>
+
+</body>
+</html>

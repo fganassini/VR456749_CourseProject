@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather station simulator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Weather station simulator</h1>
+
+<a th:href="collector">Turn on the collector</a>
+<input type="hidden" name="status" th:value="${status}" />
+
+</body>

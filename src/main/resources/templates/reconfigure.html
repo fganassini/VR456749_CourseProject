@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <<title>Weather station simulator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Reconfigure collector</h1>
+
+<form th:action="change" method="post">
+    Ground thermometer:<input type="text" name="therm1" th:value="${config.therm1.id}" required="true"><br>
+    Air thermometer:<input type="text" name="therm2" th:value="${config.therm2.id}" required="true"><br>
+    Barometer:<input type="text" name="barom" th:value="${config.barom.id}" required="true"><br>
+    Wind meter:<input type="text" name="windm" th:value="${config.windm.id}" required="true"><br>
+    Rainfall meter:<input type="text" name="rainm" th:value="${config.rainm.id}" required="true"><br>
+    Sunshine meter:<input type="text" name="sunm" th:value="${config.sunm.id}" required="true"><br>
+    <input type="submit" />
+</form>
+
+<a th:href="collector">Go back</a>
+
+</body>
+</html>

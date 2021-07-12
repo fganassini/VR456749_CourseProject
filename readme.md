@@ -135,23 +135,6 @@ __Stato finale del sistema__: il simulatore è nella schermata iniziale.
 
 
 
-### 6. Lettura del database a collezionatore spento
-
-__Assunzioni__: il simulatore è nella schermata iniziale.
-
-__Normale esecuzione:__ l'utente seleziona l'opzione "Visualizza database". Viene restituita la lista con tutti
-i dati memorizzati in esso. Viene poi fornita un'opzione all'utente per poter tornare nella schermata iniziale.
-
-__Eventuali intoppi e comportamenti relativi:__ se il database risultasse vuoto, viene visualizzato un messaggio
-"Database vuoto". Se dovessero esserci errori nel caricamento dei dati nella schermata viene visualizzato un messaggio di errore.
-Viene poi fornita un'opzione all'utente per poter tornare nella schermata iniziale.
-
-__Stato finale del sistema__: il simulatore è nella schermata iniziale.
-
-
-
-
-
 ## Design
 
 ### Casi d'uso

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather station simulator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<h1>Collector function</h1>
+
+<h3>Please click on the function link to execute it</h3>
+
+<a th:href="collect">Collect some weather data</a><br>
+<a th:href="list">Read weather data</a><br>
+<a th:href="reconfigure">Reconfigure the collector</a><br>
+<a th:href="off">Turn off the collector</a>
+<input type="hidden" name="status" th:value="${status}" />
+
+</body>

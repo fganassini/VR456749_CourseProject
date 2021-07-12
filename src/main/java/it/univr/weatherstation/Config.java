@@ -1,84 +1,66 @@
 package it.univr.weatherstation;
 
-import java.util.Objects;
+import it.univr.mock.*;
 
 public class Config {
-    private String therm1Id;
-    private String therm2Id;
-    private String baromId;
-    private String windmId;
-    private String rainmId;
-    private String sunmId;
+    private GroundThermometer therm1;
+    private AirThermometer therm2;
+    private Barometer barom;
+    private WindMeter windm;
+    private RainfallMeter rainm;
+    private SunshineMeter sunm;
 
     public Config() {
-        therm1Id = "th1_1";
-        therm2Id = "th2_2";
-        baromId = "b_1";
-        windmId = "w_1";
-        rainmId = "r_1";
-        sunmId = "s_1";
+        therm1 = new GroundThermometer("th1_1");
+        therm2 = new AirThermometer("th2_2");
+        barom =  new Barometer("b_1");
+        windm = new WindMeter("w_1");
+        rainm = new RainfallMeter("r_1");
+        sunm = new SunshineMeter("s_1");
     }
 
-    public void setTherm1Id(String therm1Id) {
-        this.therm1Id = therm1Id;
-    }
+    public void changeConfig(String therm1Id, String therm2Id, String baromId, String windmId, String rainmId, String sunmId) {
+        if(!therm1Id.equals(therm1.getId()))
+            therm1 = new GroundThermometer(therm1Id);
 
-    public void setTherm2Id(String therm2Id) {
-        this.therm2Id = therm2Id;
-    }
+        if(!therm2Id.equals(therm2.getId()))
+            therm2 = new AirThermometer(therm2Id);
 
-    public void setBaromId(String baromId) {
-        this.baromId = baromId;
-    }
+        if(!baromId.equals(barom.getId()))
+            barom = new Barometer(baromId);
 
-    public void setWindmId(String windmId) {
-        this.windmId = windmId;
-    }
+        if(!windmId.equals(windm.getId()))
+            windm = new WindMeter(windmId);
 
-    public void setRainmId(String rainmId) {
-        this.rainmId = rainmId;
-    }
+        if(!rainmId.equals(rainm.getId()))
+            rainm = new RainfallMeter(rainmId);
 
-    public void setSunmId(String sunmId) {
-        this.sunmId = sunmId;
-    }
-
-    public String getTherm1Id() {
-        return therm1Id;
-    }
-
-    public String getTherm2Id() {
-        return therm2Id;
-    }
-
-    public String getBaromId() {
-        return baromId;
-    }
-
-    public String getWindmId() {
-        return windmId;
-    }
-
-    public String getRainmId() {
-        return rainmId;
-    }
-
-    public String getSunmId() {
-        return sunmId;
+        if(!sunmId.equals(sunm.getId()))
+            sunm = new SunshineMeter(sunmId);
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Config config = (Config) o;
-        return therm1Id.equals(config.therm1Id) &&
-                therm2Id.equals(config.therm2Id) &&
-                baromId.equals(config.baromId) &&
-                windmId.equals(config.windmId) &&
-                rainmId.equals(config.rainmId) &&
-                sunmId.equals(config.sunmId);
+    public GroundThermometer getTherm1() {
+        return therm1;
     }
 
+    public AirThermometer getTherm2() {
+        return therm2;
+    }
+
+    public Barometer getBarom() {
+        return barom;
+    }
+
+    public WindMeter getWindm() {
+        return windm;
+    }
+
+    public RainfallMeter getRainm() {
+        return rainm;
+    }
+
+    public SunshineMeter getSunm() {
+        return sunm;
+    }
 }

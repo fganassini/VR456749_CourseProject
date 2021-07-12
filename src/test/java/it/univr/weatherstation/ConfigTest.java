@@ -1,5 +1,6 @@
 package it.univr.weatherstation;
 
+import it.univr.mock.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -8,59 +9,42 @@ public class ConfigTest {
     public void testConfig() {
         Config c = new Config();
         assertNotNull("New config c should be not null", c);
-        assertNotNull("Thermometer1_id should be initialized", c.getTherm1Id());
-        assertNotNull("Thermometer2_id should be initialized", c.getTherm2Id());
-        assertNotNull("Barometer_id should be initialized", c.getBaromId());
-        assertNotNull("Windmeter_id should be initialized", c.getWindmId());
-        assertNotNull("Rainmeter_id should be initialized", c.getRainmId());
-        assertNotNull("Sunmeter_id should be initialized", c.getSunmId());
+        assertNotNull("Thermometer1 should be not null", c.getTherm1());
+        assertNotNull("Thermometer2 should be not null", c.getTherm2());
+        assertNotNull("Barometer should be not null", c.getBarom());
+        assertNotNull("Windmeter should be not null", c.getWindm());
+        assertNotNull("Rainmeter should be not null", c.getRainm());
+        assertNotNull("Sunmeter should be not null", c.getSunm());
     }
 
     @Test
-    public void testSetTherm1Id() {
+    public void testChangeConfig1() {
         Config c = new Config();
-        String id = "th1_2";
-        c.setTherm1Id(id);
-        assertEquals("Therm1_id should be equal to " + id, id, c.getTherm1Id());
+        c.changeConfig("", "", "", "", "", "");
+        assertEquals("Thermometer1_id should be equal to empty string", "", c.getTherm1().getId());
+        assertEquals("Thermometer2_id should be equal to empty string", "", c.getTherm2().getId());
+        assertEquals("Barometer_id should be equal to empty string", "", c.getBarom().getId());
+        assertEquals("Windmeter_id should be equal to empty string", "", c.getWindm().getId());
+        assertEquals("Rainmeter_id should be equal to empty string", "", c.getRainm().getId());
+        assertEquals("Sunmeter_id should be equal to empty string", "", c.getSunm().getId());
     }
 
     @Test
-    public void testSetTherm2Id() {
+    public void testChangeConfig2() {
         Config c = new Config();
-        String id = "th2_2";
-        c.setTherm2Id(id);
-        assertEquals("Therm2_id should be equal to " + id, id, c.getTherm2Id());
-    }
+        GroundThermometer therm1 = c.getTherm1();
+        AirThermometer therm2 = c.getTherm2();
+        Barometer barom = c.getBarom();
+        WindMeter windm = c.getWindm();
+        RainfallMeter rainm = c.getRainm();
+        SunshineMeter sunm = c.getSunm();
+        c.changeConfig(therm1.getId(), therm2.getId(), barom.getId(), windm.getId(), rainm.getId(), sunm.getId());
 
-    @Test
-    public void testSetBaromId() {
-        Config c = new Config();
-        String id = "b_2";
-        c.setBaromId(id);
-        assertEquals("Barom_id should be equal to " + id, id, c.getBaromId());
-    }
-
-    @Test
-    public void testSetWindmId() {
-        Config c = new Config();
-        String id = "w_2";
-        c.setWindmId(id);
-        assertEquals("Windm_id should be equal to " + id, id, c.getWindmId());
-    }
-
-    @Test
-    public void testSetRainmId() {
-        Config c = new Config();
-        String id = "r_2";
-        c.setRainmId(id);
-        assertEquals("Rainm1_id should be equal to " + id, id, c.getRainmId());
-    }
-
-    @Test
-    public void testSetSunmId() {
-        Config c = new Config();
-        String id = "s_2";
-        c.setSunmId(id);
-        assertEquals("Sunm_id should be equal to " + id, id, c.getSunmId());
+        assertEquals("Thermometer1 should be the previous object", therm1, c.getTherm1());
+        assertEquals("Thermometer2 should be the previous object", therm2, c.getTherm2());
+        assertEquals("Barometer should be the previous object", barom, c.getBarom());
+        assertEquals("Windmeter should be the previous object", windm, c.getWindm());
+        assertEquals("Rainfallmeter should be the previous object", rainm, c.getRainm());
+        assertEquals("Sunshinemeter should be the previous object", sunm, c.getSunm());
     }
 }
