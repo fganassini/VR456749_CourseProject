@@ -5,7 +5,7 @@
 Il progetto implementa il componente del sistema di gestione di una stazione meteorologica. Tale componente si occupa di
 raccogliere i dati forniti da strumenti volti alla misurazione dei seguenti parametri meteorologici.  
 Inoltre ne effettua una prima elaborazione al fine di trasmetterli in un formato opportuno quando vengono richiesti dal 
-sistema centrale di archiviazione ed elaborazione dei dati meteorologici.
+"sistema centrale di archiviazione ed elaborazione dei dati meteorologici".
 
 La seguente documentazione si propone di descrivere il progetto esplicitandone:  
 1. i requisiti;
@@ -18,7 +18,7 @@ La seguente documentazione si propone di descrivere il progetto esplicitandone:
 
 ### 1. Raccolta dei dati meteorologici
 
-1. Il collezionatore raccoglie i seguenti dati dai rispettivi strumenti meteorologici:
+1. Il componente raccoglie i seguenti dati dai rispettivi strumenti meteorologici:
 
     - __temperatura del suolo__, misurata da un primo termometro;
     - __temperatura dell'aria__, misurata da un secondo termometro;
@@ -38,13 +38,13 @@ La seguente documentazione si propone di descrivere il progetto esplicitandone:
 
 ### 2. Elaborazione e memorizzazione dei dati
 
-1. Il collezionatore, una volta raccolta i dati, ne effettua una prima elaborazione per raggrupparli e formattarli.
+1. Il componente, una volta raccolta i dati, ne effettua una prima elaborazione per raggrupparli e formattarli.
 
 2. Ogni elaborazione contiene l'elenco di tutti i parametri, la data e l'ora in cui è stata effettuata.
 
 3. L'elaborazione viene effettuata dopo ogni singola raccolta.
 
-4. I dati elaborati vengono scritti sul database interno alla stazione. Esso permette di poter recuperare eventuali dati non trasmessi.
+4. I dati elaborati vengono scritti sul database interno alla stazione. Esso è presente al fine di poter recuperare eventuali dati non trasmessi.
 
 
 
@@ -60,30 +60,29 @@ forniti dal componente.
 
 ## Scenari
 
-### 1. Avvio del collezionatore
+### 1. Avvio
 
-__Assunzioni__: il simulatore è nella schermata delle funzionalità.
+__Assunzioni__: il simulatore è nella schermata delle funzionalità e il componente è spento.
 
-__Normale esecuzione:__ l'utente seleziona la funzionalità "Avvia collezionatore". Il collezionatore viene avviato
-e il simulatore passa nella schermata dedicata ai servizi del collezionatore. 
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Turn on collector". Il componente viene avviato
+e il simulatore passa nella schermata dedicata alle funzionalità. 
 
 __Eventuali intoppi e comportamenti relativi:__ se nella procedura di avvio dovessero esserci errori, viene mostrato un
 messaggio di errore.
 
-__Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
+__Stato finale del sistema__: il simulatore è nella schermata delle funzionalità e il componente è acceso.
 
 
 ### 2. Collezione dei dati meteorologici
 
 __Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
-__Normale esecuzione:__ l'utente seleziona la funzionalità "Colleziona dati". Il collezionatore effettua un numero predefinito
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Collect some weather data". Il componente effettua un numero predefinito
 di letture dagli strumenti meteorologici, le elabora e le scrive nel database. Finita l'esecuzione, viene restituito 
-all'utente il messaggio: "Collezione effettuata con successo". Viene poi fornita un'opzione all'utente per poter tornare
-nella schermata del collezionatore.
+all'utente il messaggio: "Collezione successfully done". L'utente torna nella schermata delle funzionalità selezionando un'apposita funzione.
 
 __Eventuali intoppi e comportamenti relativi:__ se la procedura di collezione comporta degli errori, viene restituito all'utente
-il messaggio "Collezione non riuscita". Viene poi fornita un'opzione all'utente per poter tornare nella schermata del collezionatore.
+un messaggio di errore. Viene poi fornita un'opzione all'utente per poter tornare nella schermata delle funzionalità.
 
 __Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
@@ -92,46 +91,43 @@ __Stato finale del sistema__: il simulatore è nella schermata delle funzionalit
 
 __Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
-__Normale esecuzione:__ l'utente seleziona la funzionalità "Richiedi dati". Il collezionatore ricava i dati presenti nel
-database e ne restituisce l'elenco all'utente modificando lo status dei dati come "trasmessi". Viene poi fornita un'opzione all'utente per poter tornare
-nella schermata del collezionatore.
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Read weather data". Il componente ricava i dati presenti nel
+database e ne restituisce l'elenco all'utente. L'utente torna nella schermata delle funzionalità selezionando un'apposita funzione.
 
-__Eventuali intoppi e comportamenti relativi:__ se il database risulta vuoto, a posto della lista viene visualizzato il
-messaggio "Nessun dato collezionato". Se dovessero esserci errori nel caricamento dei dati dal database, viene invece visualizzato
-un relativo messaggio di errore.
+__Eventuali intoppi e comportamenti relativi:__ nel caso in cui il database fosse vuoto, viene mostrato un elenco vuoto. 
+Se dovessero esserci errori nel caricamento dei dati dal database, viene invece visualizzato un messaggio di errore.
 
 __Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
 
-### 4. Riconfingurazione del collezionatore
+### 4. Riconfingurazione
 
 __Assunzioni__: il simulatore è nella schermata delle funzionalità.
 
-__Normale esecuzione:__ l'utente seleziona la funzionalità "Riconfigura". Viene mostrato un form con l'attuale
-configurazione. L'utente modifica nel form i parametri voluti e poi seleziona l'opzione "Applica". Viene nuovamente
-mostrata la schermata con i parametri aggiornati. Viene poi fornita un'opzione all'utente per poter tornare
-nella schermata del collezionatore.
+__Normale esecuzione:__ l'utente seleziona la funzionalità "Reconfigure the collector". Viene mostrato un form con l'attuale
+configurazione. L'utente modifica nel form i parametri voluti e poi seleziona l'opzione "Invia". Viene nuovamente
+mostrata la schermata con i parametri aggiornati. L'utente torna nella schermata delle funzionalità selezionando un'apposita funzione.
 
 __Eventuali intoppi e comportamenti relativi:__ se l'utente lascia dei campi vuoti, viene visualizzato un messaggio
 che lo invita a compilare i campi obbligatori.
 
-__Altre attività:__ l'utente può tornare in qualsiasi momento nella schermata del collezionatore. Se compila il form e torna
-indietro senza prima selezionare l'opzione "Applica" non viene effettuata nessuna modifica alla configurazione. Pertanto,
-al successivo accesso a "Riconfigura" verrà restituita l'ultima configurazione applicata.
+__Altre attività:__ l'utente può tornare in qualsiasi momento nella schermata delle funzionalità. Se compila il form e torna
+indietro senza prima selezionare l'opzione "Invia" non viene effettuata nessuna modifica alla configurazione. Pertanto,
+al successivo accesso a "Reconfigure the collector" verrà restituita l'ultima configurazione applicata.
 
 __Stato finale del sistema__: il simulatore è nella schermata delle funzionalità.
 
 
 ### 5. Spegnimento del collezionatore
 
-__Assunzioni__: il simulatore è nella schermata delle funzionalità.
+__Assunzioni__: il simulatore è nella schermata delle funzionalità e il componente è acceso.
 
-__Normale esecuzione:__ l'utente seleziona l'opzione "Spegni collezionatore". Viene visualizzata la schermata iniziale.
+__Normale esecuzione:__ l'utente seleziona l'opzione "Turn off the collector". Viene visualizzata la schermata iniziale.
 
 __Eventuali intoppi e comportamenti relativi:__ se dovessero esserci errori nella procedura, viene visualizzato un messaggio
 di errore.
 
-__Stato finale del sistema__: il simulatore è nella schermata iniziale.
+__Stato finale del sistema__: il simulatore è nella schermata iniziale e il componente è spento.
 
 
 
@@ -191,11 +187,26 @@ __Stato finale del sistema__: il simulatore è nella schermata iniziale.
 
 ## Test
 
-###Test d'accettazione
+### Test d'accettazione
 
-Scenario 1
+I test di accettazione sono stati implementati utilizzando il framework JWebUnit e sono disponibili al
+seguente link: [acceptance tests](https://github.com/fganassini/VR456749_AcceptanceTest).
+Di seguito ne viene effettuata una descrizione.
 
-Scenario 2
+#### Scenario 1
+
+Il test verifica se l'avvio del componente funziona correttamente. In particolare devono essere vere le seguenti condizioni:
+    
+    1. la schermata iniziale del simulatore contiene la funzionalità "Turn on the collector";
+
+    2. lo status del componente è "false", ossia spento;
+    
+    3. selezionando "Turn on the collector" viene mostrata la schermata delle funzionalità;
+    
+    4. lo status del componente viene impostato a "true, ossia acceso.
+    
+
+#### Scenario 2
 
 Scenario 3
 
