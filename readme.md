@@ -249,12 +249,12 @@ In particolare deve essere vera la condizione per cui la prima lista abbia lungh
 
 Il test verifica che la riconfigurazione avvenga correttamente. Viene utilizzata la seguente configurazione di prova:
 
-    __ID termometro 1__ = "th1_2";
-    __ID termometro 2__ = "th2_2"
-    __ID barometro__ = "b_2"
-    __ID misuratore vento__ = "w_2"
-    __ID pluviometro__ = "r_2"
-    __ID solarimetro__ = "s_2"
+    ID termometro 1 = "th1_2";
+    ID termometro 2 = "th2_2"
+    ID barometro = "b_2"
+    ID misuratore vento = "w_2"
+    ID pluviometro = "r_2"
+    ID solarimetro = "s_2"
 
 In particolare devono essere vere le seguenti condizioni:
 1. selezionando "Reconfigure the collector" viene mostrata la schermata di riconfigurazione avente un form compilabile;
@@ -268,12 +268,12 @@ In particolare devono essere vere le seguenti condizioni:
 
 Il test verifica che la riconfigurazione senza submit avvenga correttamente. Viene utilizzata la seguente configurazione di prova:
 
-    __ID termometro 1__ = "th1_3"
-    __ID termometro 2__ = "th2_3"
-    __ID barometro__ = "b_3"
-    __ID misuratore vento__ = "w_3"
-    __ID pluviometro__ = "r_3"
-    __ID solarimetro__ = "s_3"
+    ID termometro 1 = "th1_3";
+    ID termometro 2 = "th2_3"
+    ID barometro = "b_3"
+    ID misuratore vento = "w_3"
+    ID pluviometro = "r_3"
+    ID solarimetro = "s_3"
 
 In particolare devono essere vere le seguenti condizioni:
 1. impostando i campi con la configurazione descritta precedentemente e selezionando "Go back" senza aver effettuato il submit, viene restituita la schermata delle funzionalità;
