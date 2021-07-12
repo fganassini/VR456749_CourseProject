@@ -135,29 +135,29 @@ __Stato finale del sistema__: il simulatore è nella schermata iniziale e il com
 
 ### Casi d'uso
 
-![Use case diagram](/designDiagrams/UseCase.jpg)
+![Use case diagram](/pictures/UseCase.jpg)
 
 ### Diagramma delle classi
 
-![Class diagram](/designDiagrams/Class.jpg)
+![Class diagram](/pictures/Class.jpg)
 
 ### Diagrammi d'attività
 
 #### 1. Funzionamento generale del componente
 
-![Collector simulation - Activity Diagram](/designDiagrams/CollectorSimulation.jpg)
+![Collector simulation - Activity Diagram](/pictures/CollectorSimulation.jpg)
 
 #### 2. Collezione dei dati meteorologici
 
-![Collect data - Activity Diagram](/designDiagrams/CollectData.jpg)
+![Collect data - Activity Diagram](/pictures/CollectData.jpg)
 
 #### 3. Lettura dei dati meteorologici memorizzati
 
-![Read data - Activity Diagram](/designDiagrams/ReadData.jpg)
+![Read data - Activity Diagram](/pictures/ReadData.jpg)
 
 #### 4. Modifica della configurazione
 
-![Change configuration - Activity Diagram](/designDiagrams/Reconfigure.jpg)
+![Change configuration - Activity Diagram](/pictures/Reconfigure.jpg)
 
 
 
@@ -165,23 +165,23 @@ __Stato finale del sistema__: il simulatore è nella schermata iniziale e il com
 
 #### 1. Avvio
 
-![Turn on - Seq. Diagram](/designDiagrams/TurnOnCollector.jpg)
+![Turn on - Seq. Diagram](/pictures/TurnOnCollector.jpg)
 
 #### 2. Collezione dei dati meteorologici
 
-![Collect data - Seq. Diagram](/designDiagrams/GetAndProcessWeatherData.jpg)
+![Collect data - Seq. Diagram](/pictures/GetAndProcessWeatherData.jpg)
 
 #### 3. Richiesta dei dati memorizzati
 
-![Request data - Seq. Diagram](/designDiagrams/RequestWeatherDataToCollector.jpg)
+![Request data - Seq. Diagram](/pictures/RequestWeatherDataToCollector.jpg)
 
 #### 4. Modifica della configurazione
 
-![Change configuration - Seq. Diagram](/designDiagrams/ReconfigureCollector.jpg)
+![Change configuration - Seq. Diagram](/pictures/ReconfigureCollector.jpg)
 
 #### 5. Spegnimento
 
-![Turn off - Seq. Diagram](/designDiagrams/TurnOffCollector.jpg)
+![Turn off - Seq. Diagram](/pictures/TurnOffCollector.jpg)
 
 
 
@@ -287,10 +287,10 @@ Il test verifica se lo spegnimento del componente funziona correttamente. In par
 2. selezionando "Turn off the collector" viene mostrata la schermata iniziale;
 3. lo status del componente viene impostato a __false__, ossia spento.
 
-###Copertura test d'unità
 
-Al seguente link sono presenti tutti i dettagli circa la copertura dei test d'unità:
-[unit test coverage](unit-test-coverage.html).
+### Copertura test d'unità
 
-Il package mock, contenente i mock degli strumenti meteorologici,
-non sono stati testati poiché ritornano valori costanti.
+Viene mostrato il resoconto generale della copertura dei test d'unità:
+![Unit test coverage](/pictures/UnitTestCoverage.jpg)
+
+N.B.: i mock degli strumenti meteorologici non sono stati testati poiché ritornano valori costanti.
