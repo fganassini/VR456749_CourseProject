@@ -291,6 +291,7 @@ Il test verifica se lo spegnimento del componente funziona correttamente. In par
 ### Copertura test d'unità
 
 Viene mostrato il resoconto generale della copertura dei test d'unità:
+
 ![Unit test coverage](/pictures/UnitTestCoverage.jpg)
 
-N.B.: i mock degli strumenti meteorologici non sono stati testati poiché ritornano valori costanti.
+N.B.: i test d'unità si sono concentrati sulle classi del componente e non sui mock.
